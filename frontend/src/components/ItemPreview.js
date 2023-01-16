@@ -29,6 +29,8 @@ const ItemPreview = (props) => {
     }
   };
 
+  console.log('Item seller is verified', item.seller);
+
   return (
     <div
       className="card bg-dark border-light p-3"
@@ -47,12 +49,24 @@ const ItemPreview = (props) => {
           <p className="card-text crop-text-3">{item.description}</p>
         </Link>
         <div className="d-flex flex-row align-items-center pt-2 item-footer">
-          <Link to={`/@${item.seller.username}`} className="flex-grow-1">
+          <Link to={`/@${item.seller.username}`} className="flex-grow-1 text-white">
             <img
               src={item.seller.image}
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
             />
+            {item.seller.isVerified && (
+              <>
+                <img
+                  alt="top seller"
+                  src={'verified_seller.svg'}
+                />
+                <small>
+                  {' '}
+                  TOP SELLER
+                </small>
+              </>
+            )}
           </Link>
           <button className="btn btn-outline-secondary" onClick={handleClick}>
             <i className="ion-heart"></i> {item.favoritesCount}
