@@ -881,6 +881,8 @@
                 "if(tests['Item has \"slug\" property']){",
                 "    postman.setEnvironmentVariable('slug', item.slug);",
                 "}",
+                "tests['Item has \"image\" property'] = item.hasOwnProperty('image');",
+                "tests['Item\\'s \"image\" property contains default placeholder path'] = item.image === '/placeholder.png';",
                 "tests['Item has \"body\" property'] = item.hasOwnProperty('body');",
                 "tests['Item has \"createdAt\" property'] = item.hasOwnProperty('createdAt');",
                 "tests['Item\\'s \"createdAt\" property is an ISO 8601 timestamp'] = new Date(item.createdAt).toISOString() === item.createdAt;",
