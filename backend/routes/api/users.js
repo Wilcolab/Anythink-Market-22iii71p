@@ -40,9 +40,6 @@ router.put("/user", auth.required, function(req, res, next) {
       if (typeof req.body.user.password !== "undefined") {
         user.setPassword(req.body.user.password);
       }
-      if (typeof req.body.user.isVerified !== "undefined") {
-        user.isVerified = req.body.user.isVerified;
-      }
 
       return user.save().then(function() {
         return res.json({ user: user.toAuthJSON() });
@@ -80,10 +77,6 @@ router.post("/users", function(req, res, next) {
   user.username = req.body.user.username;
   user.email = req.body.user.email;
   user.setPassword(req.body.user.password);
-
-  if (typeof req.body.user.isVerified !== undefined) {
-    user.isVerified = req.body.user.isVerified;
-  }
 
   user
     .save()
